@@ -90,30 +90,30 @@
     <!-- Tracks -->
     <div class="row justify-between items-center q-gutter-sm q-pt-xs q-pb-xs" v-if="$q.screen.gt.xs">
       <span class="col-shrink text-bold">Health</span>
-      <resource-track class="col-grow" v-model="campaign.data.character.tracks.health" />
+      <resource-track class="col-grow" tone="health" v-model="campaign.data.character.tracks.health" />
       <q-separator vertical />
 
       <span class="col-shrink text-bold">Spirit</span>
-      <resource-track class="col-grow" v-model="campaign.data.character.tracks.spirit" />
+      <resource-track class="col-grow" tone="spirit" v-model="campaign.data.character.tracks.spirit" />
       <q-separator vertical />
 
       <span class="col-shrink text-bold">Supply</span>
-      <resource-track class="col-grow" v-model="campaign.data.character.tracks.supply" />
+      <resource-track class="col-grow" tone="supply" v-model="campaign.data.character.tracks.supply" />
     </div>
     <div v-else>
       <div class="row q-gutter-sm justify-between items-center">
         <span class="col-2 text-bold">Health</span>
-        <resource-track class="col-grow" v-model="campaign.data.character.tracks.health" />
+        <resource-track class="col-grow" tone="health" v-model="campaign.data.character.tracks.health" />
       </div>
 
       <div class="row q-gutter-sm justify-between items-center">
         <span class="col-2 text-bold">Spirit</span>
-        <resource-track class="col-grow" v-model="campaign.data.character.tracks.spirit" />
+        <resource-track class="col-grow" tone="spirit" v-model="campaign.data.character.tracks.spirit" />
       </div>
 
       <div class="row q-gutter-sm justify-between items-center">
         <span class="col-2 text-bold">Supply</span>
-        <resource-track class="col-grow" v-model="campaign.data.character.tracks.supply" />
+        <resource-track class="col-grow" tone="supply" v-model="campaign.data.character.tracks.supply" />
       </div>
     </div>
 
