@@ -29,6 +29,7 @@
         <q-route-tab v-if="config.data.journalTab" to="/journal" label="Journal" />
         <q-route-tab to="/" :label="campaign.data.character.name" />
         <q-route-tab to="/challenges" label="Challenges" />
+        <q-route-tab to="/encounter" label="Encounter" />
         <q-route-tab to="/world" label="World" />
       </q-tabs>
     </q-header>
