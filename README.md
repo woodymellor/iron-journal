@@ -28,3 +28,13 @@ See [Configuring quasar.conf.js](https://v2.quasar.dev/quasar-cli/quasar-conf-js
 ## Live web application
 
 [Launch Iron Journal](https://woodymellor.github.io/iron-journal/)
+
+## Personal fork enhancements
+
+- Faster startup without the animated splash.
+- Campaign clocks with manual and probability-based advancement.
+- Encounter tab: live PC resources and stats, action rolls, momentum burn, initiative, foe progress and notes.
+- Optional Menace tracks on vows, general progress tracks and encounter foes.
+- Ascending, colour-filled resource bars on Character and Encounter screens: pale red health, blue spirit, yellow supply, primary-colour positive momentum and purple negative momentum.
+
+See [current state](CURRENTSTATE.MD), [roadmap](ROADMAP.MD) and [Mythos design](MYTHOS.MD).
