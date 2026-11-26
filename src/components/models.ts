@@ -271,7 +271,14 @@ export interface IClock {
   roll: number;
 }
 
+export interface IEncounterFoe {
+  id: string;
+  track: IProgressTrack;
+  notes: string;
+}
+
 export interface ICampaign {
+  encounter?: { initiative: boolean; foes: IEncounterFoe[] };
   clocks?: IClock[];
   id: string;
   name: string;
