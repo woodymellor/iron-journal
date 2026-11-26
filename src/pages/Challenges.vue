@@ -25,7 +25,6 @@
       v-for="(track, pIndex) in campaign.data.progressTracks"
       :key="pIndex"
       v-model="campaign.data.progressTracks[pIndex]"
-      :showMenaceBtn="false"
     >
       <template v-slot:action v-if="config.data.edit">
         <q-btn class="col-shrink" icon="delete" flat dense @click="removeTrack(pIndex)" />
