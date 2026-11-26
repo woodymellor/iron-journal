@@ -9,9 +9,7 @@
       </div>
       <div v-for="key in resources" :key="key" class="row items-center q-mb-xs">
         <div class="col text-capitalize">{{ key }}</div>
-        <q-btn flat dense icon="remove" @click="adjust(key, -1)" />
-        <div class="text-h6 text-center" style="min-width: 42px">{{ campaign.data.character.tracks[key].value }}</div>
-        <q-btn flat dense icon="add" @click="adjust(key, 1)" />
+        <resource-track class="col-9" :tone="key" v-model="campaign.data.character.tracks[key]" />
       </div>
       <q-separator class="q-my-sm" />
       <div class="row items-center justify-between">
@@ -50,11 +48,12 @@ import { IStats, ITracks } from 'src/components/models';
 import { NewProgressTrack, Difficulty } from 'src/lib/tracks';
 import { moveRoll, NewRollData } from 'src/lib/roll';
 import { v4 as uuid } from 'uuid';
+import ResourceTrack from 'src/components/Tracks/ResourceTrack.vue';
 import ProgressTrack from 'src/components/Tracks/ProgressTrack.vue';
 
 export default defineComponent({
   name: 'Encounter',
-  components: { ProgressTrack },
+  components: { ProgressTrack, ResourceTrack },
   setup() {
     const campaign = useCampaign();
     const encounter = computed(() => campaign.data.encounter || { initiative: false, foes: [] });
