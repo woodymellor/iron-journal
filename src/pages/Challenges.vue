@@ -56,7 +56,7 @@ export default defineComponent({
   setup() {
     const campaign = useCampaign();
     const config = useConfig();
-    const clockPanel = ref<InstanceType<typeof CampaignClocks> | null>(null);
+    const clockPanel = ref<{ add: () => void } | null>(null);
 
     const addVow = () => campaign.data.character.vows.push(NewProgressTrack());
     const removeVow = (index: number) => campaign.data.character.vows.splice(index, 1);
