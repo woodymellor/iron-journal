@@ -31,25 +31,32 @@
         <q-btn class="col-shrink" icon="delete" flat dense @click="removeTrack(pIndex)" />
       </template>
     </progress-track>
+    <q-separator />
+    <div class="text-h4 text-center q-mt-md q-mb-sm">
+      Clocks<q-btn icon="add_circle" flat dense @click="clockPanel?.add()" />
+    </div>
+    <campaign-clocks ref="clockPanel" />
   </q-page>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 
 import { useCampaign } from 'src/store/campaign';
 
 import { NewProgressTrack } from 'src/lib/tracks';
 
+import CampaignClocks from 'src/components/Tracks/CampaignClocks.vue';
 import ProgressTrack from 'src/components/Tracks/ProgressTrack.vue';
 import { useConfig } from 'src/store/config';
 
 export default defineComponent({
   name: 'Challenges',
-  components: { ProgressTrack },
+  components: { ProgressTrack, CampaignClocks },
   setup() {
     const campaign = useCampaign();
     const config = useConfig();
+    const clockPanel = ref<InstanceType<typeof CampaignClocks> | null>(null);
 
     const addVow = () => campaign.data.character.vows.push(NewProgressTrack());
     const removeVow = (index: number) => campaign.data.character.vows.splice(index, 1);
@@ -58,6 +65,7 @@ export default defineComponent({
     const removeTrack = (index: number) => campaign.data.progressTracks.splice(index, 1);
 
     return {
+      clockPanel,
       campaign,
       config,
 
