@@ -9,15 +9,12 @@
       dense
       rounded
     />
-    <q-btn-toggle
-      class="col-grow"
-      spread
-      unelevated
-      dense
-      :options="opts"
-      v-model="data.value"
-      @update:modelValue="updateValue"
-    />
+    <div class="col-grow row no-wrap resource-bar">
+      <q-btn v-for="n in opts" :key="n.value" class="col resource-cell" dense unelevated
+        :label="n.label" :style="cellStyle(Number(n.value))"
+        :aria-pressed="Number(data.value) === Number(n.value)"
+        @click="selectValue(Number(n.value))" />
+    </div>
     <q-btn
       class="col-shrink c-btn"
       v-if="variable"
@@ -41,6 +38,7 @@ export default defineComponent({
       type: Object as PropType<ITrack | IMomentum>,
       required: true,
     },
+    tone: { type: String, default: 'primary' },
     reverse: {
       type: Boolean,
     },
@@ -57,17 +55,21 @@ export default defineComponent({
       { deep: true }
     );
 
-    const updateValue = () => ctx.emit('update:modelValue', data);
+    const updateValue = () => ctx.emit('update:modelValue', data.value);
+    const selectValue = (n: number) => { data.value.value = n; updateValue(); };
+    const cellStyle = (n: number) => {
+      const v = Number(data.value.value);
+      const negative = Number(data.value.min) < 0 && v < 0;
+      const filled = negative ? n >= v && n <= 0 : n >= 0 && n <= v;
+      const colors: Record<string, string> = { health: '#dba0a0', spirit: '#a5c4e4', supply: '#e6d18e' };
+      return { background: filled ? (negative ? '#b9a0d5' : colors[props.tone] || 'var(--q-primary)') : 'rgba(128,128,128,.12)', color: filled ? (negative || colors[props.tone] ? '#292929' : '#fff') : 'inherit', fontWeight: n === v ? 'bold' : 'normal', boxShadow: n === v ? 'inset 0 0 0 2px currentColor' : 'none' };
+    };
 
     const opts = computed((): ISelectOpt[] => {
       const out: ISelectOpt[] = [];
       for (let i = data.value.min; i <= data.value.max; i++) {
         const o: ISelectOpt = { label: i, value: i };
-        if (props.reverse) {
-          out.push(o);
-        } else {
-          out.unshift(o);
-        }
+        out.push(o);
       }
       return out;
     });
@@ -83,6 +85,8 @@ export default defineComponent({
     return {
       data,
       opts,
+      cellStyle,
+      selectValue,
       increment,
       decrement,
       updateValue,
@@ -94,4 +98,10 @@ export default defineComponent({
 <style lang="sass">
 .c-btn
   background-color: $primary
+.resource-bar
+  gap: 2px
+.resource-cell
+  min-width: 0
+  padding: 2px 0
+  font-size: 12px
 </style>
