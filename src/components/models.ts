@@ -262,7 +262,17 @@ export interface IMap {
   cells: { [index: string]: IMapCell };
 }
 
+export interface IClock {
+  id: string;
+  name: string;
+  segments: number;
+  filled: number;
+  advance: string;
+  roll: number;
+}
+
 export interface ICampaign {
+  clocks?: IClock[];
   id: string;
   name: string;
   character: ICharacter;
