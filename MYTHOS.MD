@@ -170,3 +170,7 @@ Prioritise a **usable, lightweight journal/dashboard** rather than a complete, p
 ### Influences
 
 *Chuubo's Marvelous Wish-Granting Engine* (thematic arcs, episode/title prompts and narrative pacing), *The Adventure Crafter* (weighted plot-point themes), *Skyrim* (interleaved questlines and free play), serial television (show/seasons/episodes), *Mythic*, *Everspark*, *The GameMaster's Apprentice* and *Plot Unfolding Machine* (modular oracle/plot ideas). These are **inspirations**; Mythos is not presented as their official rules or a faithful adaptation.
+
+## Implementation relationship to Iron Journal
+
+The personal Iron Journal fork now has campaign clocks, an Encounter workspace, optional Menace tracks on foes and general progress tracks, and shared resource bars. These are useful existing building blocks for future Mythos integration, not an implementation of Mythos itself. Seasons, episodes, scoped narrative lists, archetype weighting and Mythos XP progression remain design proposals. See [CURRENTSTATE.MD](CURRENTSTATE.MD) and [ROADMAP.MD](ROADMAP.MD).
