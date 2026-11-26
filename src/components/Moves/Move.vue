@@ -1,11 +1,17 @@
 <template>
   <q-expansion-item
     class="shadow-1 overflow-hidden"
-    :label="move.name"
-    :caption="caption"
     :header-class="cardStyle"
     style="border-radius: 4px"
   >
+    <template v-slot:header>
+      <q-item-section>
+        <q-item-label>
+          {{ move.name }}<sup v-if="initiativeLabel" class="initiative-label">{{ initiativeLabel }}</sup>
+        </q-item-label>
+        <q-item-label caption>{{ caption }}</q-item-label>
+      </q-item-section>
+    </template>
     <q-card class="card-bg">
       <q-card-section v-html="move.text" />
       <q-card-section v-if="move.oracles" class="q-gutter-md">
@@ -58,6 +64,19 @@ export default defineComponent({
     const caption = computed((): string => {
       return `${props.moveType}: ${props.move.source}`;
     });
+    const initiativeLabel = computed((): string => {
+      if (props.moveType !== 'Combat Moves') return '';
+      switch (props.move.name) {
+        case 'Strike':
+        case 'End the Fight':
+          return 'Initiative';
+        case 'Clash':
+        case 'Turn the Tide':
+          return 'No initiative';
+        default:
+          return '';
+      }
+    });
     const save = () => {
       const campaign = useCampaign();
       results.value.forEach((v) => {
@@ -70,6 +89,7 @@ export default defineComponent({
       save,
       cardStyle,
       caption,
+      initiativeLabel,
     };
   },
 });
@@ -83,6 +103,13 @@ ul
 ul li
   margin: 0
   padding: 0
+
+.initiative-label
+  font-size: 0.6em
+  font-weight: normal
+  opacity: 0.8
+  margin-left: 0.5em
+  line-height: 0
 
 .move-header
   text-shadow: 1px 1px 1px #4C566A
