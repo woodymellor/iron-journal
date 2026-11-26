@@ -34,7 +34,7 @@
     <div class="text-h4 text-center q-mb-sm">Foes<q-btn flat dense icon="add_circle" @click="addFoe" /></div>
     <div v-if="!encounter.foes.length" class="text-center text-grey q-pa-md">Add a foe or group to begin.</div>
     <q-card v-for="foe in encounter.foes" :key="foe.id" flat bordered class="q-mb-md q-pa-sm">
-      <progress-track v-model="foe.track" :show-menace-btn="false">
+      <progress-track v-model="foe.track">
         <template v-slot:action><q-btn flat dense icon="delete" @click="removeFoe(foe.id)" /></template>
       </progress-track>
       <div class="text-caption q-pa-xs">Rank harm: {{ difficulty[foe.track.difficulty].harm }} · Mark progress once per harm inflicted</div>
