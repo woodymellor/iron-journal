@@ -11,11 +11,15 @@ Maintain a personal, hosted fork of Iron Journal V2 for the original Ironsworn a
 
 ## Priorities
 1. **Baseline deployment — completed:** host Iron Journal V2 unchanged in gameplay terms; confirm browser functionality before adding features.
-2. **Clocks — next:** add Stargazer-style campaign clocks for independent developments (e.g. approaching winter, rival clan preparations). Proposed controls: named clocks, configurable segment count, increment/decrement and reset; persist with campaign data and preserve backup compatibility. Inspect Stargazer source for reusable components before implementing.
+2. **Clocks — implemented, testing pending:** add Stargazer-style campaign clocks for independent developments (e.g. approaching winter, rival clan preparations). Proposed controls: named clocks, configurable segment count, increment/decrement and reset; persist with campaign data and preserve backup compatibility. Stargazer source inspected; campaign-wide clocks implemented.
 3. **Narrative organisation — proposed, not committed:** seasons, episodes and scenes; episodes behave like main story quests, with optional side quests and free play between them.
 4. **Parallel storylines — proposed:** track multiple independent threads and their progress; allow switching between them.
 5. **Random connections — proposed:** select existing NPCs, locations and story threads to generate surprises; consider scoped random pools (episode, season, entire campaign).
 6. **Custom oracles and generators — proposed:** extend existing tools where useful.
+
+## Additional changes
+- Intro splash animation removed; genuine loading indicator retained.
+- Google Drive integration deferred; retain local autosave and JSON backups.
 
 ## Separate future project
 An Everspark companion inspired by Iron Journal is a possible separate project, not a requirement for this fork. Reuse system-independent components where practical. Avoid changing Ironsworn rules or expanding scope before the initial version is playable.
