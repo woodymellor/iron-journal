@@ -29,3 +29,6 @@ Verify deployment, test startup and clocks, including persistence and backup res
 
 ## Working constraints
 Keep the project fast and incremental; aim for a usable version rather than a comprehensive redesign. Avoid unnecessary dependencies and infrastructure. Test the implemented changes. See ROADMAP.MD for later, optional features.
+
+## Encounter tab
+- Added src/pages/Encounter.vue, navigation and optional persistent encounter data. Uses current PC stats/resources, initiative, action rolls and momentum burn, existing foe progress tracks, rank harm and notes. One encounter per campaign; manually entered foes. Build and browser tests pending.
